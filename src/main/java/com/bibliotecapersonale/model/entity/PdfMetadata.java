@@ -1,16 +1,12 @@
 package com.bibliotecapersonale.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.Instant;
 
 @Entity
 @Table(name = "pdf_metadata")
@@ -25,28 +21,28 @@ public class PdfMetadata {
   @Column(name = "id_metadata")
   private Long idMetadata;
 
-  @Column(name = "autore")
+  @Column(name = "autore", columnDefinition = "VARCHAR(500)")
   private String author;
 
-  @Column(name = "titolo")
+  @Column(name = "titolo", columnDefinition = "VARCHAR(500)")
   private String title;
 
-  @Column(name = "soggetto")
+  @Column(name = "soggetto", columnDefinition = "VARCHAR(5000)")
   private String subject;
 
-  @Column(name = "creatore")
+  @Column(name = "creatore", columnDefinition = "VARCHAR(500)")
   private String creator;
 
-  @Column(name = "produttore")
+  @Column(name = "produttore", columnDefinition = "VARCHAR(500)")
   private String producer;
 
   @Column(name = "data_creazione")
-  private String creationDate;
+  private Instant creationDate;
 
   @Column(name = "data_modifica")
-  private String modificationDate;
+  private Instant modificationDate;
 
-  @Column(name = "percorso_file")
+  @Column(name = "percorso_file", columnDefinition = "VARCHAR(500)")
   private String filePath;
 
   @OneToOne(mappedBy = "pdfMetadata")
