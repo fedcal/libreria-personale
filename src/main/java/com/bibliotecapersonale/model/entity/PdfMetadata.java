@@ -21,19 +21,19 @@ public class PdfMetadata {
   @Column(name = "id_metadata")
   private Long idMetadata;
 
-  @Column(name = "autore", columnDefinition = "VARCHAR(500)")
+  @Column(name = "autore", columnDefinition = "TEXT")
   private String author;
 
-  @Column(name = "titolo", columnDefinition = "VARCHAR(500)")
+  @Column(name = "titolo", columnDefinition = "TEXT")
   private String title;
 
-  @Column(name = "soggetto", columnDefinition = "VARCHAR(5000)")
+  @Column(name = "soggetto", columnDefinition = "TEXT")
   private String subject;
 
-  @Column(name = "creatore", columnDefinition = "VARCHAR(500)")
+  @Column(name = "creatore", columnDefinition = "TEXT")
   private String creator;
 
-  @Column(name = "produttore", columnDefinition = "VARCHAR(500)")
+  @Column(name = "produttore", columnDefinition = "TEXT")
   private String producer;
 
   @Column(name = "data_creazione")
@@ -42,7 +42,7 @@ public class PdfMetadata {
   @Column(name = "data_modifica")
   private Instant modificationDate;
 
-  @Column(name = "percorso_file", columnDefinition = "VARCHAR(500)")
+  @Column(name = "percorso_file", columnDefinition = "TEXT")
   private String filePath;
 
   @OneToOne(mappedBy = "pdfMetadata")
