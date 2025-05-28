@@ -2,6 +2,7 @@ package com.bibliotecapersonale.config;
 
 import com.bibliotecapersonale.model.entity.Libro;
 import com.bibliotecapersonale.model.entity.PdfMetadata;
+import com.bibliotecapersonale.model.enums.TipoFileEnum;
 import com.bibliotecapersonale.repository.LibroRepository;
 import com.bibliotecapersonale.repository.PdfMetadataRepository;
 import com.bibliotecapersonale.utils.DateParserUtil;
@@ -68,9 +69,9 @@ public class PdfBatchConfig {
 
           String path = file.getAbsolutePath();
 
-            if (metadataRepository.existsByFilePath(path)) {
-                continue;
-            }
+          if (metadataRepository.existsByFilePath(path)) {
+            continue;
+          }
 
           Calendar creationCal = info.getCreationDate();
           Calendar modificationCal = info.getModificationDate();
@@ -104,10 +105,13 @@ public class PdfBatchConfig {
                   .creationDate(creationDate.isPresent() ? creationDate.get() : null)
                   .modificationDate(modificationDate.isPresent() ? modificationDate.get() : null)
                   .filePath(path)
+                  .tipoFile(TipoFileEnum.fromExtension(path.substring(path.lastIndexOf('.') + 1)))
                   .build();
 
           PdfMetadata savedMetadata = metadataRepository.save(metadata);
-          libroRepository.save(new Libro(null, path.substring(path.lastIndexOf('\\') + 1, path.lastIndexOf('.')),savedMetadata));
+          libroRepository.save(
+                  new Libro(null, path.substring(path.lastIndexOf('\\') + 1, path.lastIndexOf('.')),
+                          savedMetadata));
 
         } catch (IOException e) {
           System.err.println("Errore nel leggere il file PDF: " + file.getName());

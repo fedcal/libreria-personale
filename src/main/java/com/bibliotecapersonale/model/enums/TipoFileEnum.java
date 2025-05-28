@@ -23,4 +23,13 @@ public enum TipoFileEnum {
   DOCX("docx");
 
   private final String fieldName;
+
+  public static TipoFileEnum fromExtension(String extension) {
+    for (TipoFileEnum tipo : values()) {
+      if (tipo.fieldName.equalsIgnoreCase(extension)) {
+        return tipo;
+      }
+    }
+    throw new IllegalArgumentException("Estensione file non supportata: " + extension);
+  }
 }
