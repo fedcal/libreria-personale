@@ -3,15 +3,14 @@ package com.bibliotecapersonale.service.impl;
 import com.bibliotecapersonale.model.dto.GenericResponse;
 import com.bibliotecapersonale.model.dto.MetadatiPdfDto;
 import com.bibliotecapersonale.service.LibreriaService;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDDocumentInformation;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDDocumentInformation;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 @Service
 public class LibreriaServiceImpl implements LibreriaService {
@@ -25,7 +24,7 @@ public class LibreriaServiceImpl implements LibreriaService {
     List<MetadatiPdfDto> listaMetadati = new ArrayList<>();
 
     if (rootFolder.exists() && rootFolder.isDirectory()) {
-      scanFolder(rootFolder,listaMetadati);
+      scanFolder(rootFolder, listaMetadati);
     } else {
       System.out.println("Percorso non valido o non è una cartella");
     }
