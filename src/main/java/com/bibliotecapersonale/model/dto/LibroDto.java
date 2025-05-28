@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LibroDto {
+
   private Long idLibro;
   private PdfMetadataDto pdfMetadata;
 }

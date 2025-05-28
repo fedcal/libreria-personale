@@ -7,8 +7,9 @@ import lombok.Setter;
 @Builder
 @Getter
 @Setter
-public class GenericResponse <T>{
-    private String message;
-    private String codeMessage;
-    private T data;
+public class GenericResponse<T> {
+
+  private String message;
+  private String codeMessage;
+  private T data;
 }

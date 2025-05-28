@@ -37,7 +37,8 @@ public class JobLauncherController {
       jobLauncher.run(scanAndSavePdfMetaJob, params);
       return ResponseEntity.ok("Job avviato correttamente.");
     } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Errore durante l'avvio del job: " + e.getMessage());
+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+              .body("Errore durante l'avvio del job: " + e.getMessage());
     }
   }
 }

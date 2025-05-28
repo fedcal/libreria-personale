@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PdfMetadataRepository extends JpaRepository<PdfMetadata, Long> {
+
   boolean existsByFilePath(String filePath);
 }

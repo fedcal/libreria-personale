@@ -1,12 +1,18 @@
 package com.bibliotecapersonale.model.entity;
 
-import jakarta.persistence.*;
+import com.bibliotecapersonale.model.enums.TipoFileEnum;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import java.time.Instant;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.Instant;
 
 @Entity
 @Table(name = "pdf_metadata")
@@ -44,6 +50,9 @@ public class PdfMetadata {
 
   @Column(name = "percorso_file", columnDefinition = "TEXT")
   private String filePath;
+
+  @Column(name = "tipo_file", columnDefinition = "VARCHAR(10)")
+  private TipoFileEnum tipoFile;
 
   @OneToOne(mappedBy = "pdfMetadata")
   private Libro libro;
